@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Payment Details</title>
+    <style>
+        /* Your CSS styles */
+        .navbar {
+            background-color: blue;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .navbar a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: gold;
+            color: black;
+        }
+
+        .navbar img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 30px;
+            width: 350px;
+            margin: 0 auto;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        form input[type="text"],
+        form input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form input[type="number"],
+        form input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button[type="button"],
+        form button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #searchDate,
+        #searchButton {
+            margin-bottom: 20px;
+        }
+
+        #viewSubmittedDetails {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #submittedDetails {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 100%;
+            margin: 0 auto;
+            display: none;
+        }
+
+        #submittedDetails b {
+            color: #333;
+        }
+
+        .editButtons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .editButtons button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .editButtons button:nth-child(2) {
+            background-color: green;
+        }
+
+        .editButtons button:nth-child(3) {
+            background-color: red;
+        }
+
+        .secondContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: black;
+            font-family: "bree-serief";
+            font-size: 26px;
+
+        }
+
+        .head {
+            color: white;
+            font-size: 26px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="https://res.cloudinary.com/dw3odfp3e/image/upload/v1695367596/th_qgoz4z.jpg" alt="Physiotherapy Logo">
+        <h1 class="head">Aparna Physiotherapy Clinic</h1>
+    </div>
+    <h1>Patient Details</h1>
+    <form id="paymentForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Full Name" required><br>
+
+        <label for="dob">Date of Birth (DOB):</label>
+        <input type="date" id="dob" name="dob" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea><br>
+
+        <label for="mobile">Mobile:</label>
+        <input type="tel" id="mobile" name="mobile" required><br>
+
+        <label for="chiefComplaints">Chief Complaints:</label>
+        <textarea id="chiefComplaints" name="chiefComplaints" rows="4" required></textarea><br>
+
+        <label for="pastMedicalHistory">Past Medical History:</label>
+        <textarea id="pastMedicalHistory" name="pastMedicalHistory" rows="4" required></textarea><br>
+
+        <label for="presentMedicalHistory">Present Medical History:</label>
+        <textarea id="presentMedicalHistory" name="presentMedicalHistory" rows="4" required></textarea><br>
+
+        <label for="diagnosis">Diagnosis:</label>
+        <textarea id="diagnosis" name="diagnosis" rows="4" required></textarea><br>
+
+        <label for="physiotherapyTreatment">Physiotherapy Treatment:</label>
+        <textarea id="physiotherapyTreatment" name="physiotherapyTreatment" rows="4" required></textarea><br>
+
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" placeholder="Amount" required><br>
+
+        <label for="daysAttended">No of Days Attended:</label>
+        <input type="number" id="daysAttended" name="daysAttended" required><br>
+
+        <label for="paymentDate">Payment Date:</label>
+        <input type="date" id="paymentDate" name="paymentDate" required><br>
+
+        <label for="referredDoctor">Referred Doctor:</label>
+        <input type="text" id="referredDoctor" name="referredDoctor" required><br>
+
+        <button type="button" id="submitPayment">Submit Payment</button>
+    </form>
+
+    <hr>
+
+    <div class="secondContainer">
+        <h2>Search by Patient Name</h2>
+        <input type="text" id="searchName" oninput="searchDetailsByName()">
+
+        <h2>Search Patients by Date</h2>
+        <input type="date" id="searchDate">
+
+        <button type="button" id="viewSubmittedDetails">View Submitted Details</button>
+
+        <div id="submittedDetails" style="display: none;"></div>
+
+        <div id="totalAmount">Total Amount: Rs. 0.00</div>
+
+        <div id="totalAmountByDate"></div>
+    </div>
+
+    <script>
+        // JavaScript code for Payment Details
+        // Get references to the DOB and age input fields
+        const dobInput = document.getElementById('dob');
+        const ageInput = document.getElementById('age');
+
+        // Add an event listener to the DOB input field
+        dobInput.addEventListener('change', function() {
+            // Get the selected date from the DOB input
+            const dobDate = new Date(this.value);
+
+            // Calculate the age based on the selected date
+            const today = new Date();
+            const age = today.getFullYear() - dobDate.getFullYear();
+
+            // Check if the birthday has already occurred this year
+            if (
+                today.getMonth() < dobDate.getMonth() ||
+                (today.getMonth() === dobDate.getMonth() && today.getDate() < dobDate.getDate())
+            ) {
+                age--;
+            }
+
+            // Update the age input field with the calculated age
+            ageInput.value = age;
+        });
+
+        // Initialize the list of submitted payment details from localStorage or an empty array
+        const submittedDetailsList = JSON.parse(localStorage.getItem('submittedDetails')) || [];
+        let detailsVisible = false; // Set initial state to false
+
+        // Hide submitted details on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const submittedDetailsDiv = document.getElementById('submittedDetails');
+            submittedDetailsDiv.style.display = 'none';
+            detailsVisible = false;
+        });
+
+        // Function to toggle submitted details visibility
+        function toggleSubmittedDetails() {
+            const submittedDetailsDiv = document.getElementById('submittedDetails');
+
+            if (detailsVisible) {
+                submittedDetailsDiv.style.display = 'none';
+                detailsVisible = false;
+            } else {
+                submittedDetailsDiv.style.display = 'block';
+                detailsVisible = true;
+                displaySubmittedDetails(); // Show the submitted details when the button is clicked
+            }
+        }
+
+        // Function to display submitted details
+        function displaySubmittedDetails() {
+            const submittedDetailsDiv = document.getElementById('submittedDetails');
+            submittedDetailsDiv.innerHTML = '';
+
+            submittedDetailsList.forEach((details, index) => {
+                const detailsText = `
+            <div>
+                <b>Patient Details ${index + 1}:</b><br>
+                Name: <span id="name_${index}">${details.name}</span><br>
+                Date of Birth (DOB): <span id="dob_${index}">${details.dob}</span><br>
+                Age: <span id="age_${index}">${details.age}</span><br>
+                Gender: <span id="gender_${index}">${details.gender}</span><br>
+                Address: <span id="address_${index}">${details.address}</span><br>
+                Mobile: <span id="mobile_${index}">${details.mobile}</span><br>
+                Chief Complaints: <span id="chiefComplaints_${index}">${details.chiefComplaints}</span><br>
+                Past Medical History: <span id="pastMedicalHistory_${index}">${details.pastMedicalHistory}</span><br>
+                Present Medical History: <span id="presentMedicalHistory_${index}">${details.presentMedicalHistory}</span><br>
+                Diagnosis: <span id="diagnosis_${index}">${details.diagnosis}</span><br>
+                Physiotherapy Treatment: <span id="physiotherapyTreatment_${index}">${details.physiotherapyTreatment}</span><br>
+                Amount: <span id="amount_${index}">${details.amount}</span><br>
+                No of Days Attended: <span id="daysAttended_${index}">${details.daysAttended}</span><br>
+                Payment Date: <span id="paymentDate_${index}">${details.paymentDate}</span><br>
+                Referred Doctor: <span id="referredDoctor_${index}">${details.referredDoctor}</span><br>
+                <div class="editButtons">
+                    <button type="button" id="editButton_${index}" onclick="editDetail(${index})">Edit</button>
+                    <button type="button" id="saveButton_${index}" onclick="saveDetail(${index})" style="display: none;">Save</button>
+                    <button type="button" onclick="deleteDetail(${index})">Delete</button>
+                </div>
+            </div>
+            <hr>
+        `;
+                submittedDetailsDiv.innerHTML += detailsText;
+            });
+
+            calculateTotalAmountByDate();
+
+            submittedDetailsDiv.style.display = 'block';
+        }
+
+        // Function to edit a payment detail
+        function editDetail(index) {
+            // Make detail fields editable for the specified index
+            const fields = ['name', 'age', 'gender', 'dob', 'address', 'mobile', 'chiefComplaints', 'pastMedicalHistory', 'presentMedicalHistory', 'diagnosis', 'physiotherapyTreatment', 'amount', 'daysAttended', 'paymentDate', 'referredDoctor'];
+
+            fields.forEach(field => {
+                const element = document.getElementById(`${field}_${index}`);
+                if (element) {
+                    element.contentEditable = true;
+                    element.style.border = '1px solid #007bff';
+                }
+            });
+
+            // Show the save button, hide the edit button
+            const editButton = document.getElementById(`editButton_${index}`);
+            const saveButton = document.getElementById(`saveButton_${index}`);
+
+            if (editButton && saveButton) {
+                editButton.style.display = 'none';
+                saveButton.style.display = 'inline-block';
+            } else {
+                console.error('Edit or save button elements not found.');
+            }
+        }
+
+        // Function to save a payment detail
+        function saveDetail(index) {
+            const detail = submittedDetailsList[index];
+
+            // Make detail fields non-editable for the specified index
+            const fields = ['name', 'age', 'gender', 'dob', 'address', 'mobile', 'chiefComplaints', 'pastMedicalHistory', 'presentMedicalHistory', 'diagnosis', 'physiotherapyTreatment', 'amount', 'daysAttended', 'paymentDate', 'referredDoctor'];
+
+            fields.forEach(field => {
+                const element = document.getElementById(`${field}_${index}`);
+                if (element) {
+                    element.contentEditable = false;
+                    element.style.border = 'none';
+
+                    // Update detail object with edited values
+                    detail[field] = element.textContent;
+                }
+            });
+
+            // Update the detail object in the list
+            submittedDetailsList[index] = detail;
+
+            localStorage.setItem('submittedDetails', JSON.stringify(submittedDetailsList));
+
+            // Show the edit button, hide the save button
+            const editButton = document.getElementById(`editButton_${index}`);
+            const saveButton = document.getElementById(`saveButton_${index}`);
+
+            if (editButton && saveButton) {
+                editButton.style.display = 'inline-block';
+                saveButton.style.display = 'none';
+
+                // Display a success message
+                alert("Payment details saved successfully.");
+            } else {
+                console.error('Edit or save button elements not found.');
+            }
+        }
+
+        // Function to delete a payment detail
+        function deleteDetail(index) {
+            if (confirm("Are you sure you want to delete this payment detail?")) {
+                submittedDetailsList.splice(index, 1);
+                localStorage.setItem('submittedDetails', JSON.stringify(submittedDetailsList));
+                displaySubmittedDetails();
+            }
+        }
+
+        // Function to calculate and display the total amount by date
+        function calculateTotalAmountByDate() {
+            const selectedDate = document.getElementById('searchDate').value;
+            let totalAmount = 0;
+
+            if (selectedDate) {
+                submittedDetailsList.forEach((details) => {
+                    if (details.paymentDate === selectedDate) {
+                        totalAmount += parseFloat(details.amount);
+                    }
+                });
+            } else {
+                const today = getCurrentDate();
+                submittedDetailsList.forEach((details) => {
+                    if (details.paymentDate === today) {
+                        totalAmount += parseFloat(details.amount);
+                    }
+                });
+            }
+
+            const totalAmountDiv = document.getElementById('totalAmount');
+            totalAmountDiv.textContent = `Total Amount: Rs. ${totalAmount.toFixed(2)}`;
+        }
+
+        // Event listener for the "View Submitted Details" button
+        document.getElementById('viewSubmittedDetails').addEventListener('click', function() {
+            toggleSubmittedDetails();
+        });
+
+        // Event listener for the date input
+        document.getElementById('searchDate').addEventListener('change', function() {
+            searchDetailsByDate();
+        });
+
+        // Event listener for the "Submit Payment" button
+        document.getElementById('submitPayment').addEventListener('click', function() {
+            // You can add validation logic here if needed
+            const paymentForm = document.getElementById('paymentForm');
+
+            // Create an object to store the form data
+            const formData = {
+                name: paymentForm.name.value,
+                age: paymentForm.age.value,
+                gender: paymentForm.gender.value,
+                dob: paymentForm.dob.value,
+                address: paymentForm.address.value,
+                mobile: paymentForm.mobile.value,
+                chiefComplaints: paymentForm.chiefComplaints.value,
+                pastMedicalHistory: paymentForm.pastMedicalHistory.value,
+                presentMedicalHistory: paymentForm.presentMedicalHistory.value,
+                diagnosis: paymentForm.diagnosis.value,
+                physiotherapyTreatment: paymentForm.physiotherapyTreatment.value,
+                amount: paymentForm.amount.value,
+                daysAttended: paymentForm.daysAttended.value,
+                paymentDate: paymentForm.paymentDate.value,
+                referredDoctor: paymentForm.referredDoctor.value
+            };
+
+            // Push the form data to the submittedDetailsList
+            submittedDetailsList.push(formData);
+
+            // Store the updated list in localStorage
+            localStorage.setItem('submittedDetails', JSON.stringify(submittedDetailsList));
+
+            // Display the submitted details
+            displaySubmittedDetails();
+
+            // Clear the form fields
+            paymentForm.reset();
+
+            // Display a success message (you can modify this)
+            alert("Payment details submitted successfully.");
+        });
+
+        // Function to filter details by selected date
+        function searchDetailsByDate() {
+            const selectedDate = document.getElementById('searchDate').value;
+            const filteredDetails = [];
+
+            if (selectedDate) {
+                submittedDetailsList.forEach((details) => {
+                    if (details.paymentDate === selectedDate) {
+                        filteredDetails.push(details);
+                    }
+                });
+            }
+
+            displayFilteredDetails(filteredDetails);
+        }
+
+        // Function to display filtered details by name
+        function displayFilteredDetails(filteredDetails) {
+            const submittedDetailsDiv = document.getElementById('submittedDetails');
+            submittedDetailsDiv.innerHTML = '';
+
+            filteredDetails.forEach((details, index) => {
+                const detailsText = `
+            <div>
+                <b>Patient Details ${index + 1}:</b><br>
+                Name: <span id="name_${index}">${details.name}</span><br>
+                Date of Birth (DOB): <span id="dob_${index}">${details.dob}</span><br>
+                Age: <span id="age_${index}">${details.age}</span><br>
+                Gender: <span id="gender_${index}">${details.gender}</span><br>
+                Address: <span id="address_${index}">${details.address}</span><br>
+                Mobile: <span id="mobile_${index}">${details.mobile}</span><br>
+                Chief Complaints: <span id="chiefComplaints_${index}">${details.chiefComplaints}</span><br>
+                Past Medical History: <span id="pastMedicalHistory_${index}">${details.pastMedicalHistory}</span><br>
+                Present Medical History: <span id="presentMedicalHistory_${index}">${details.presentMedicalHistory}</span><br>
+                Diagnosis: <span id="diagnosis_${index}">${details.diagnosis}</span><br>
+                Physiotherapy Treatment: <span id="physiotherapyTreatment_${index}">${details.physiotherapyTreatment}</span><br>
+                Amount: <span id="amount_${index}">${details.amount}</span><br>
+                No of Days Attended: <span id="daysAttended_${index}">${details.daysAttended}</span><br>
+                Payment Date: <span id="paymentDate_${index}">${details.paymentDate}</span><br>
+                Referred Doctor: <span id="referredDoctor_${index}">${details.referredDoctor}</span><br>
+                <div class="editButtons">
+                    <button type="button" onclick="editDetail(${index})">Edit</button>
+                    <button type="button" onclick="saveDetail(${index})" style="display: none;">Save</button>
+                    <button type="button" onclick="deleteDetail(${index})">Delete</button>
+                </div>
+            </div>
+            <hr>
+                `;
+                submittedDetailsDiv.innerHTML += detailsText;
+            });
+
+            calculateTotalAmountByDate();
+        }
+
+        // Function to search details by patient name
+        function searchDetailsByName() {
+            const searchName = document.getElementById('searchName').value.toLowerCase();
+            const filteredDetails = [];
+
+            if (searchName.trim() === '') {
+                // If the search input is empty, display all details
+                displaySubmittedDetails();
+                return;
+            }
+
+            submittedDetailsList.forEach((details) => {
+                const name = details.name.toLowerCase();
+                if (name.includes(searchName)) {
+                    filteredDetails.push(details);
+                }
+            });
+
+            displayFilteredDetails(filteredDetails);
+        }
+
+
+
+        function getCurrentDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // Initial display of submitted details
+        displaySubmittedDetails();
+    </script>
+</body>
+
+</html>
